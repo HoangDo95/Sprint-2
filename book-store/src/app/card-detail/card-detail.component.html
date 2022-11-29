@@ -1,0 +1,92 @@
+<div class="container ">
+
+  <div class="row">
+    <!-- Cart Start -->
+    <div class="container-fluid">
+      <div class="row px-xl-5">
+        <div class="table-responsive mb-5">
+          <table class="table ">
+            <thead class="thead-dark">
+            <tr>
+              <th>Người mua</th>
+              <th>Ngày mua sách</th>
+              <th>Địa chỉ</th>
+              <th>Số điện thoại</th>
+              <th>Tổng tiền</th>
+              <th>Thông tin</th>
+            </tr>
+            </thead>
+            <tbody class="align-middle">
+            <tr *ngFor="let item of history.cartList">
+              <td class="align-middle">{{history.name}}</td>
+              <td class="align-middle">{{item.dateCreate}}</td>
+              <td class="align-middle">{{history.address}}</td>
+              <td class="align-middle">0{{history.phone}}</td>
+              <td class="align-middle">{{getTotalMoney(item)}}</td>
+              <td class="align-middle">
+                <button type="button" class="btn btn-success" (click)="showDetail(item)" data-bs-toggle="modal" data-bs-target="#listModal">Chi tiết</button>
+              </td>
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+      <!-- Cart End -->
+    </div>
+  </div>
+</div>
+<div data-bs-backdrop="static" data-bs-keyboard="false" class="modal fade" id="listModal" tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header" style="background-color: #44b89d; height: 50px">
+        <span class="modal-title text-light" id="myModalLabel" style="font-size: 18px">Danh sách sách giao dịch</span>
+        <button type="button" data-bs-dismiss="modal" class="btn btn-none" aria-label="Close">
+          <span aria-hidden="true" style="color: white">×</span>
+        </button>
+      </div>
+      <!--Body-->
+      <div class="modal-body">
+        <table class="table table-hover">
+          <thead style="font-weight: 300">
+          <tr>
+            <th>STT</th>
+            <th>Tiêu đề</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of cart.cartDetailList,index as i">
+            <th scope="row">{{i + 1}}</th>
+            <td>{{item.book.name}}</td>
+            <td>{{item.book.price| currency:'':'':'3.0'}}đ</td>
+            <td>
+              <table>
+                <tr>
+                  <td>
+                    {{item.quantity}}
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3" class="text-end">Tổng tiền:</td>
+            <td colspan="2" style="color: #dc3545;font-weight: bold">{{getTotalMoney(cart) | currency:'':'':'3.0'}}đ
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+

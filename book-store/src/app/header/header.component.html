@@ -1,0 +1,67 @@
+<div class="container-fluid">
+  <div class="row" style="height: 2.5rem;background-color: grey">
+    <div class="col-6 align-items-center justify-content-center "
+         style="display: flex;gap:1rem;font-size: 1rem;margin: 0 auto;color: white">
+      <div> Giới thiệu</div>
+      <div ><a routerLink="/cartDetail" style="color:white ">Lịch sử giao dịch</a> </div>
+      <div> Kiểm tra đơn hàng</div>
+    </div>
+    <div class="col-6">
+      <div class="col-2"></div>
+      <div class="col-8 align-items-center justify-content-center"
+           style="display: flex;gap: 0.9rem;font-size: 1rem;margin:6px auto;color:black" [hidden]="isLoggedIn">
+        <div type="button" style="color: white" routerLink="/customer/create" > Đăng ký</div>
+        <div type="button" style="color:white" routerLink="/login"> Đăng Nhập</div>
+      </div>
+      <div class="col-8 align-items-center justify-content-center"
+           style="display: flex;gap: 0.9rem;font-size: 1rem;margin:6px auto;color:white" [hidden]="!isLoggedIn">
+            <div style="color: white" routerLink="/detail">Tài khoản : <span> {{username}}</span></div>
+            <div ><a style="color:white" href="" (click)="logOut()">Đăng xuất</a></div>
+      </div>
+      <div class="col-2"></div>
+    </div>
+  </div>
+  <div class="row" style=" background-color: white;display: flex;align-items: center;">
+    <div class="col-1"></div>
+    <div class=" col-2">
+      <img style="width: 70%; height: auto" src="/assets/img/logo.jpg">
+    </div>
+    <div class="col-8">
+      <form [formGroup]="formSearch" class="row" (submit)="search()">
+        <div class="col-8" style="margin-left: 5rem">
+          <nav class="nav navbar-expand ">
+            <input type="search" class="form-control" name="search" formControlName="search">
+            <button class="btn btn-secondary" type="submit" style="margin-left: 5px">Tìm kiếm</button>
+          </nav>
+        </div>
+      </form>
+
+<!--      <div type="button" class="row col-8 align-items-center justify-content-end" style="margin-top: 1rem">-->
+<!--        <i class="fa fa-cart-plus" aria-hidden="true"></i>-->
+<!--      </div>-->
+    </div>
+    <div class="col-1">
+      <i routerLink="/cart" style="font-size: xx-large" class="fa fa-cart-plus" aria-hidden="true"></i>
+    </div>
+  </div>
+  <div class="row" style="height: 40px;background-color:grey">
+    <div class="row nav">
+      <div class="col-12" style="padding: 0 10%">
+        <ul class="d-flex justify-content-between align-items-center uls">
+          <li type="button" routerLink="/list">TRANG CHỦ</li>
+<!--          [routerLink]="['/list']"-->
+          <li>DANH MỤC SÁCH
+            <ul class="sup-nav">
+              <li (click)="getCategory(item.id)" *ngFor="let item of categoryList"
+                  class="text-uppercase">{{item.name}}</li>
+            </ul>
+          </li>
+          <li type="button" routerLink="/topBook">SÁCH BÁN CHẠY</li>
+          <li>KHUYẾN MÃI</li>
+          <li *ngIf="['ROLE_ADMIN'].indexOf(role)!==-1" type="button" routerLink="create">THÊM MỚI SÁCH</li>
+          <li routerLink="/chat">LIÊN HỆ</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

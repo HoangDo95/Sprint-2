@@ -1,0 +1,113 @@
+/* Login */
+li{
+  list-style-type: none;
+}
+
+a{
+  text-decoration: none;
+  color: #0F1419;
+}
+
+a:hover{
+  text-decoration: none;
+  color: #0F1419;
+}
+
+.login{
+  position: relative;
+  width: auto;
+  height: 100vh;
+  background-image: url("https://nxbhcm.com.vn/slider/data1/images/sach%20moi_sw-03.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.login form{
+  width: 30%;
+  height: auto;
+  margin: 0 auto;
+  border: 1px solid #fff;
+  padding: 1.5rem;
+  border-radius: 0.3rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+}
+
+.login form h1{
+  text-align: center;
+}
+
+.login form p{
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+  color: #344054;
+}
+
+.login form .form-check-label{
+  font-size: 0.8rem;
+}
+
+.login form a{
+  font-size: 0.8rem;
+  color: #667085;
+}
+
+.login form .btn-group{
+  display: flex;
+  flex-direction: column;
+}
+
+.login form .save-forget{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+}
+
+.login form .btn-group .btn{
+  margin-bottom: 1rem;
+}
+
+.login form .btn-group .btn-warning{
+  background-color: transparent;
+  color: #e0a800;
+}
+
+.login form .btn-group .btn-light{
+  background-color: transparent;
+  border: 1px solid #D0D5DD;
+}
+
+.login form .btn-group .btn-light .bi-facebook{
+  margin-right: .5rem;
+  color: #1877F2;
+}
+
+.img-wrap {
+  position: relative;
+  height: auto;
+  overflow: hidden;
+  background-position: 50% 50%;
+  background-size: cover;
+  padding-top: 56.25%;
+}
+.img-wrap img {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 100%;
+  transform: translateZ(0);
+  margin: 0 auto;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  position: absolute;
+  object-position: 50% 50%;
+  object-fit: cover;
+}

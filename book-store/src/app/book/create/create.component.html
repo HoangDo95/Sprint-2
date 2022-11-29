@@ -1,0 +1,218 @@
+<div class="body">
+  <div class="container py-5">
+    <div class="row" >
+      <div class="col-lg-2"></div>
+      <form class="col-lg-8"  [formGroup]="bookForm" (ngSubmit)="submit()">
+        <div class="mb-3 text-center">
+          <h2><b>Thêm Mới Sách</b></h2>
+        </div>
+        <hr>
+        <div class="mx-4">
+          <div class="row">
+
+            <div class="col-lg-12 d-grid">
+              <mat-form-field appearance="outline">
+                <mat-label>Tên Sách <span><i>(*)</i></span></mat-label>
+                <input matInput type="text" placeholder="Nhập Tên Sách" formControlName="name" >
+                <mat-error *ngIf="bookForm.controls.name.hasError('required') && bookForm.controls.name.touched">
+                  Vui lòng không để trống.
+                </mat-error>
+                <mat-error *ngIf="bookForm.controls.name.hasError('maxlength') && bookForm.controls.name.touched">
+                  Vui long không nhập quá 100 kí tự.
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6 d-grid">
+              <mat-form-field appearance="outline">
+                <mat-label>Tác Giả <span><i>(*)</i></span></mat-label>
+                <input matInput type="text" placeholder="Nhập Tên Tác Giả"  formControlName="author">
+                <mat-error *ngIf="bookForm.controls.author.hasError('required') && bookForm.controls.author.touched" >
+                  Vui lòng không để trống.
+                </mat-error>
+                <mat-error *ngIf="bookForm.controls.author.hasError('maxlength') && bookForm.controls.author.touched" >
+                  Vui lòng không nhập quá 100 kí tự.
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-lg-6 d-grid">
+              <mat-form-field appearance="outline">
+                <mat-label>Dịch Giả <span><i>(*)</i></span></mat-label>
+                <input matInput type="text" placeholder="Nhập Tên Dịch Giả"  formControlName="translator">
+                <mat-error *ngIf="bookForm.controls.translator.hasError('required') && bookForm.controls.translator.touched" >
+                  Vui lòng không để trống.
+                </mat-error>
+                <mat-error *ngIf="bookForm.controls.translator.hasError('maxlength') && bookForm.controls.translator.touched" >
+                  Vui lòng không nhập quá 100 kí tự.
+                </mat-error>
+
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6 d-grid">
+              <mat-form-field appearance="outline">
+                <mat-label>Kích Thước (cm) <span><i>(*)</i></span></mat-label>
+                <input matInput type="text" placeholder="Nhập Kích Thước"  formControlName="dimension">
+                <mat-error *ngIf="bookForm.controls.dimension.hasError('required') && bookForm.controls.dimension.touched" >
+                  Vui lòng không để trống.
+                </mat-error>
+                <mat-error *ngIf="bookForm.controls.dimension.hasError('min') && bookForm.controls.dimension.touched" >
+                  Vui lòng nhập đúng định dạng không âm và lớn hơn 0.
+                </mat-error>
+
+              </mat-form-field>
+            </div>
+            <div class="col-lg-6 d-grid">
+              <mat-form-field appearance="outline">
+                <mat-label>Giá Sách <span><i>(*)</i></span></mat-label>
+                <input matInput type="number" placeholder="Nhập Giá Sách" formControlName="price" >
+                <mat-error *ngIf="bookForm.controls.price.hasError('required') && bookForm.controls.price.touched" >
+                  Vui lòng không để trống.
+                </mat-error>
+                <mat-error *ngIf="bookForm.controls.price.hasError('min') && bookForm.controls.price.touched" >
+                  Vui lòng nhập giá không âm và lớn hơn 0.
+                </mat-error>
+
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6 d-grid">
+              <mat-form-field appearance="outline">
+                <mat-label>Nhà Xuất Bản <span><i>(*)</i></span></mat-label>
+                <input matInput type="text" placeholder="Nhập Nhà Xuất Bản"  formControlName="publishingHome">
+                <mat-error *ngIf="bookForm.controls.publishingHome.hasError('required') && bookForm.controls.publishingHome.touched" >
+                  Vui lòng không để trống.
+                </mat-error>
+                <mat-error *ngIf="bookForm.controls.publishingHome.hasError('maxlength') && bookForm.controls.publishingHome.touched" >
+                  Vui lòng không nhập quá 100 kí tự.
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-lg-6 d-grid">
+              <mat-form-field appearance="outline">
+                <mat-label>Ngày Xuất Bản <span><i>(*)</i></span></mat-label>
+                <input matInput type="date" formControlName="releaseDate" >
+                <mat-error *ngIf="bookForm.controls.releaseDate.hasError('required') && bookForm.controls.releaseDate.touched" >
+                  Vui lòng không để trống.
+                </mat-error>
+
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6 d-grid">
+              <mat-form-field appearance="outline">
+                <mat-label>Số Lượng <span><i>(*)</i></span></mat-label>
+                <input matInput type="number"  formControlName="quantity">
+
+                <mat-error *ngIf="bookForm.controls.quantity.hasError('required') && bookForm.controls.quantity.touched" >
+                  Vui lòng không để trống.
+                </mat-error>
+                <mat-error *ngIf="bookForm.controls.quantity.hasError('min') && bookForm.controls.quantity.touched" >
+                  Vui lòng nhập giá không âm và lớn hơn 0.
+                </mat-error>
+
+              </mat-form-field>
+            </div>
+            <div class="col-lg-6 d-grid">
+              <mat-form-field appearance="outline">
+                <mat-label>Tổng Số Trang <span><i>(*)</i></span></mat-label>
+                <input matInput type="number"  formControlName="totalPage">
+
+                <mat-error *ngIf="bookForm.controls.totalPage.hasError('required') && bookForm.controls.totalPage.touched" >
+                  Vui lòng không để trống.
+                </mat-error>
+                <mat-error *ngIf="bookForm.controls.totalPage.hasError('min') && bookForm.controls.totalPage.touched" >
+                  Vui lòng nhập giá không âm và lớn hơn 0.
+                </mat-error>
+
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6 d-grid">
+              <mat-form-field appearance="outline">
+                <mat-label>Danh Mục <span><i>(*)</i></span></mat-label>
+                <mat-select formControlName="category">
+                  <mat-option *ngFor="let item of categoryList" [value]="item">{{item.name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="bookForm.controls.category.hasError('required') && bookForm.controls.category.touched" >
+                  Vui lòng không để trống.
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col-lg-6 d-grid">
+              <mat-form-field appearance="outline">
+                <mat-label>Giảm giá <span><i>(*)</i></span></mat-label>
+                <input matInput type="number" placeholder="Nhập giảm giá"  formControlName="discount">
+
+                <mat-error *ngIf="bookForm.controls.discount.hasError('required') && bookForm.controls.discount.touched" >
+                  Vui lòng không để trống.
+                </mat-error>
+                <mat-error *ngIf="bookForm.controls.discount.hasError('min') && bookForm.controls.discount.touched" >
+                  Vui lòng nhập giá không âm.
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12 d-grid">
+              <mat-form-field appearance="outline">
+                <mat-label>Mô Tả <span><i>(*)</i></span></mat-label>
+                <textarea matInput type="textarea" rows="5" formControlName="description" ></textarea>
+
+                <mat-error *ngIf="bookForm.controls.description.hasError('required') && bookForm.controls.description.touched" >
+                  Vui lòng không để trống.
+                </mat-error>
+
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="row">
+              <div class="col-lg-12 d-grid image">
+                <label class="form-label text-start">Chọn Ảnh <span><i>(*)</i></span></label>
+                <!--                <img matTooltip="Nhấn Vào Đây Để Chọn Ảnh" *ngIf="!editImageState" src="https://cdn-icons-gif.flaticon.com/8121/8121335.gif" width="300px" height="300px" (click)="fileInput.click()">-->
+                <img matTooltip="Nhấn Vào Đây Để Chọn Ảnh" *ngIf="!editImageState" src="https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg?w=996" width="300px" height="300px" (click)="fileInput.click()">
+                <input hidden (change)="selectFile($event); onFileSelected($event)" #fileInput type="file">
+                <!--                <img *ngIf="!editImageState" [src]="bookForm.get('image').value" width="100%" height="auto" alt="">-->
+                <img class="form-control mt-2" [src]="url" (click)="fileInput.click()" *ngIf="editImageState"
+                     width="auto" height="auto" alt="">
+                <div class="form-text" *ngIf="checkImgSize == true">Kích Thước Ảnh Quá Lớn.</div>
+                <div class="form-text" *ngIf="checkImg == true && checkImgSize == false && regexImageUrl == false">
+                  Vui Lòng Không Để Trống.
+                </div>
+                <div class="form-text" *ngIf="regexImageUrl == true && checkImgSize == false">
+                  Chỉ Chấp Nhận Ảnh Có Định Dạng .jpg / .JPG.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-grid gap-2 d-md-flex justify-content-md-around">
+            <a routerLink="">
+              <button mat-raised-button color="warn"> Quay Lại</button>
+            </a>
+            <button  type="submit" mat-raised-button color="primary" [disabled]="!bookForm.valid"
+                    > Thêm mới
+            </button>
+            <button  type="reset" mat-raised-button color="accent" (click)="reset()"> Nhập Lại
+            </button>
+          </div>
+        </div>
+      </form>
+      <div class="col-lg-2"></div>
+    </div>
+  </div>
+</div>

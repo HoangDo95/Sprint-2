@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-2">
+  </div>
+  <div class="col-8">
+    <canvas id="myChart" style="width: 10rem;height:5rem"></canvas>
+  </div>
+  <div class="col-2"></div>
+</div>
+<form [formGroup]="topBookList" class="row" style="margin: 2rem 2rem" (submit)="summit()">
+  <div class="col-2"></div>
+  <div class="col-8">
+    <div class="row">
+      <div class="col-4"> <h3 style="margin-left: 1rem">Chọn ngày thống kê :</h3> </div>
+      <div class="col-3 text-center">
+        <h5>Ngày bắt đầu</h5>
+        <input formControlName="startDate" type="date" style="border-radius: 5px">
+      </div>
+      <div class="col-3 text-center">
+        <h5>Ngày bắt đầu</h5>
+        <input formControlName="endDate" type="date" style="border-radius: 5px">
+      </div>
+      <div class="col-2 "> <button style="margin-top: 1rem;margin-left: 0" type="submit" class="btn btn-primary">Thống kê</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-2"></div>
+</form>

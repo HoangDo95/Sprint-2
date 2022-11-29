@@ -1,0 +1,105 @@
+<div class="container my-5">
+
+  <div class="row" *ngIf="cartDetail.length">
+    <!-- Cart Start -->
+    <div class="container-fluid">
+      <div class="row px-xl-5">
+        <div class="col-lg-8 table-responsive mb-5">
+          <table class="table ">
+            <thead class="thead-dark">
+            <tr>
+              <th>Tên sách</th>
+              <th>Giá</th>
+              <th>Số lượng</th>
+              <th>Tổng tiền</th>
+              <th>Xóa</th>
+            </tr>
+            </thead>
+            <tbody class="align-middle">
+            <tr *ngFor="let item of cartDetail">
+              <td class="align-middle"><img
+                [src]="item.book.img"
+                style="width: 50px;"> {{item.book.name}}
+              </td>
+              <td class="align-middle">{{item.book.price | number}}</td>
+              <td class="align-middle">
+                <ul class="list-inline mt-3">
+                  <li class="list-inline-item" (click)="decCard(item.book )"><span
+                    class="btn btn-secondary" id="btn-minus1">-</span></li>
+
+                  <li class="list-inline-item"><span style="width: 3.5rem" class="btn btn-secondary bg-secondary"
+                                                     id="var-value1">{{item.quantity}}</span></li>
+                  <li class="list-inline-item" (click)="incCard(item.book)"><span class="btn btn-secondary"
+                                                                                  id="btn-plus1">+</span></li>
+                </ul>
+              </td>
+              <td class="align-middle">{{item.quantity * item.book.price | number}}</td>
+              <td class="align-middle">
+                <button (click)="deleteCart(item.book.id)" class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                       class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                    <path
+                      d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                  </svg>
+                </button>
+              </td>
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <div class="col-lg-4">
+          <div style="margin-top: 0.5rem">
+            <div class="example-container">
+              <div class="w-100">
+                <!--                <p style="margin: 0;font-size: 1.3rem;font-weight: 600">Mã Giảm Giá :</p>-->
+                <!--                <input  style="margin-left: 0.3rem;border-radius: 5px" type="text"  placeholder="Mã Giảm Giá">-->
+                <mat-form-field appearance="outline" class="w-100" style="padding: 0;margin: 0">
+                  <mat-label>Mã giảm giá</mat-label>
+                  <input matInput type="number">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class=" p-30 mb-5">
+              <div class="border-bottom pb-2">
+                <div class="d-flex justify-content-between mb-3">
+                  <h5>Tổng tiền</h5>
+                  <h5>{{totalCart |number}} VNĐ</h5>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <h5 class="font-weight-medium">Phí vận chuyển</h5>
+                  <h5 class="font-weight-medium">{{money |number}} VNĐ</h5>
+                </div>
+              </div>
+              <div class="pt-2">
+                <div class="d-flex justify-content-between mt-2">
+                  <h5>Tổng</h5>
+                  <h5>{{money + totalCart |number}} VNĐ</h5>
+                </div>
+                <div class="text-center">
+                  <button class="btn btn-block btn-secondary my-3 " (click)="payment()">Thanh toán</button>
+                  <div id="paypal"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cart End -->
+    </div>
+  </div>
+  <div class="alert alert-danger" style="margin-top: 35px"
+       *ngIf="cartDetail==null|| (cartDetail &&cartDetail.length === 0)">
+    <img style="width: 30rem;height: 30rem;margin-right: 1rem" src="https://img.freepik.com/free-vector/work-office-computer-man-woman-business-character-marketing-online-employee-technology-business-man-cartoon-co-working-flat-design-freelance_1150-41790.jpg?w=1060&t=st=1667190034~exp=1667190634~hmac=9cdb131eca0451cf604507fa93d498f6c548ec91d183b00ec06f472cdb126b87" alt="">
+    <b>Chưa Có Sản Phẩm Nào trong Giỏ Hàng ! </b><a routerLink="">Click Vào Đây Để Mua Hàng</a>
+  </div>
+
+
+</div>
+
+
+
